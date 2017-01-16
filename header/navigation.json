@@ -2,14 +2,14 @@
   "courseName":"Pakiet turystyczny",
   "slides":[
     {"index":1,"label":"Ekran 1"},
-    {"index":10,"label":"Ekran 2"},
-    {"index":12,"label":"Ekran 3"},
-    {"index":"sda545","label":"Ekran 4"},
-    {"index":3,"label":"Ekran 5"},
-    {"index":4,"label":"Ekran 6"},
-    {"index":5,"label":"Ekran 7"},
-    {"index":6,"label":"Ekran 8"},
-    {"index":7,"label":"Ekran 9"},
-    {"index":8,"label":"Ekran 10"}
+    {"index":2,"label":"Ekran 2"},
+    {"index":3,"label":"Ekran 3"},
+    {"index":4,"label":"Ekran 4"},
+    {"index":5,"label":"Ekran 5"},
+    {"index":6,"label":"Ekran 6"},
+    {"index":7,"label":"Ekran 7"},
+    {"index":8,"label":"Ekran 8"},
+    {"index":9,"label":"Ekran 9"},
+    {"index":10,"label":"Ekran 10"}
   ]
 }

@@ -1,3 +1,11 @@
+.no-selection {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
 .mnheader {
   position:absolute;
@@ -6,7 +14,7 @@
 }
 
 .mnrollover {
-  height:135px;
+  height:78px;
 }
 
 .mnheader p {

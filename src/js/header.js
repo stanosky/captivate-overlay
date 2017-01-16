@@ -7,7 +7,7 @@
     var slideNumber = $('#slideNumber');
     var slideName = $('#slideName');
 
-    $.getJSON("header/navigation.json", function(json) {
+    $.getJSON("../navigation.json", function(json) {
         //console.log('json',json);
         var navigation = json;
         var interfaceObj = evt.Data;

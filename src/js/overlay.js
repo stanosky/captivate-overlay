@@ -1,11 +1,20 @@
 'use strict';
 
 (function(){
+  function hideHeader() {
+    $('#mnheader').slideUp(100);
+  }
+
+  function showHeader() {
+    $('#mnheader').slideDown(100);
+  }
+  
   window.addEventListener("moduleReadyEvent", function(evt)
   {
-    var courseName = $('#courseName');
-    var slideNumber = $('#slideNumber');
-    var slideName = $('#slideName');
+    let courseName = $('#courseName');
+    let slideNumber = $('#slideNumber');
+    let slideName = $('#slideName');
+
 
     $.getJSON("../navigation.json", function(json) {
         //console.log('json',json);
@@ -26,16 +35,17 @@
           }
         });
     });
+
     $('#mnheader').slideUp(0);
     $( "#mnrollover" )
       .mouseenter(function(event) {
-        $('#mnheader').slideDown(100);
+        showHeader();
         //var screenNumber = window.cpAPIInterface.getVariableValue('cpCmndGotoSlide');
         //window.cpAPIInterface.setVariableValue('cpCmndGotoSlide',screenNumber+1);
         event.preventDefault ? event.preventDefault() : (event.returnValue = false);
       })
       .mouseleave(function(event) {
-        $('#mnheader').slideUp(100);
+        hideHeader();
         event.preventDefault ? event.preventDefault() : (event.returnValue = false);
       });
   });

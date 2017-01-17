@@ -10,11 +10,13 @@ const del =require('del');
 const slugify =require('slug');
 
 var config = {
-  appFile: ['./src/index.js'],
-  includeFiles: ['src/css/*.*','src/img/*.*','src/index.html'],
-  outputDir: './test/',
-  outputFile: './mn/overlay.js',
-  distDir: './dist/'
+  appFile: ['./src/js/overlay.js'],
+  courseFiles: 'course/**/*',
+  assetsDir: ['src/mn/**/*'],
+  htmlDir: ['src/index.html','src/navigation.json'],
+  testDir: './test',
+  distDir: './dist',
+  outputFile: './mn/overlay.js'
 };
 
 var bundler;
@@ -32,25 +34,33 @@ function bundle() {
     .bundle()
     .on('error', function(err) { console.log('Error: ' + err.message); })
     .pipe(source(config.outputFile))
-    .pipe(gulp.dest(config.outputDir))
+    .pipe(gulp.dest(config.testDir))
+    .pipe(gulp.dest(config.distDir))
     .pipe(reload({ stream: true }));
 }
 
-
-// clean the output directory
-/*gulp.task('clean', function(cb){
-    rimraf(config.outputDir, cb);
-});*/
 gulp.task('clean', function() {
-  return del([config.outputDir]);
+  return del([config.testDir+'/**','!'+config.testDir,config.distDir+'/**','!'+config.distDir]);
 });
 
-gulp.task('dist', function() {
-    gulp.src(config.includeFiles)
+gulp.task('assets', ['clean'], function() {
+    gulp.src(config.assetsDir)
+    .pipe(gulp.dest(config.distDir+'/mn'))
+    .pipe(gulp.dest(config.testDir+'/mn'))
+});
+
+gulp.task('html', ['assets'], function() {
+    gulp.src(config.htmlDir)
     .pipe(gulp.dest(config.distDir))
+    .pipe(gulp.dest(config.testDir))
 });
 
-gulp.task('build-persistent', [/*'clean',*/'dist'], function() {
+gulp.task('dist', ['html'], function() {
+    gulp.src([config.courseFiles,config.distDir+'**/*'])
+    .pipe(gulp.dest(config.testDir))
+});
+
+gulp.task('build-persistent', ['dist'], function() {
   return bundle();
 });
 
@@ -63,7 +73,7 @@ gulp.task('watch', ['build-persistent'], function() {
   browserSync({
     open: false,
     server: {
-      baseDir: config.outputDir
+      baseDir: config.testDir
     }
   });
 
@@ -71,13 +81,4 @@ gulp.task('watch', ['build-persistent'], function() {
     gulp.start('build-persistent')
   });
   gulp.watch(['./src/*.html','./src/css/*.css','./src/js/*.js'], ['build-persistent']);
-});
-
-// WEB SERVER
-gulp.task('serve', function () {
-  browserSync({
-    server: {
-      baseDir: config.outputDir
-    }
-  });
 });

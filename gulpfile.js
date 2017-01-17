@@ -80,5 +80,5 @@ gulp.task('watch', ['build-persistent'], function() {
   getBundler().on('update', function() {
     gulp.start('build-persistent')
   });
-  gulp.watch(['./src/*.html','./src/css/*.css','./src/js/*.js'], ['build-persistent']);
+  gulp.watch(['./src/*.html','./src/mn/css/*.css','./src/js/*.js'], ['build-persistent']);
 });

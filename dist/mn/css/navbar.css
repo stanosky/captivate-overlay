@@ -1,0 +1,65 @@
+.gradient-idle{
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0f1f1+0,e0e1e5+100 */
+  background: #f0f1f1; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f0f1f1 0%, #e0e1e5 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #f0f1f1 0%,#e0e1e5 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #f0f1f1 0%,#e0e1e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f1f1', endColorstr='#e0e1e5',GradientType=0 ); /* IE6-9 */
+}
+
+.gradient-over {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4f5f5+0,ffffff+100 */
+  background: #f4f5f5; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f4f5f5 0%, #ffffff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #f4f5f5 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #f4f5f5 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f5f5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.sep-l {
+  position: absolute;
+  left:0;
+}
+
+.sep-r {
+  position: absolute;
+  right:0;
+}
+
+#mnnavbar {
+    position: absolute;
+    border-color: #000;
+    bottom: 0;
+    height:31px;
+    width:100%;
+    background-color: #f0f1f1;
+    z-index:101;
+}
+
+#mnnavbar a {
+
+}
+
+#mnnavbar div {
+  display: inline-block;
+  position: absolute;
+  width:41px;
+  height:100%;
+  background-color: #00ff00;
+}
+
+#menubtn {
+  left: 4px;
+}
+
+#prevbtn {
+  right: 94px;
+}
+
+#tocbtn {
+  right: 49px;
+}
+
+#nextbtn {
+  right: 4px;
+}

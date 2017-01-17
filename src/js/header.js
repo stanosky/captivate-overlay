@@ -12,7 +12,6 @@ let Header = function (interfaceObj,nav){
   let showHeader = function () {
     $('#mnheader').slideDown(100);
   };
-
   var eventEmitterObj = interfaceObj.getEventEmitter();
   eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
     //console.log('nav',nav);

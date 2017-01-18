@@ -1,9 +1,9 @@
 'use strict';
 
-const Header = require('./header');
-const Navbar = require('./navbar');
-const Menu = require('./menu');
-const TableOfContents = require('./toc');
+const Header = require('./Header');
+const Navbar = require('./Navbar');
+const Menu = require('./Menu');
+const TableOfContents = require('./TableOfContents');
 
 (function(){
   let cpInterface;
@@ -15,15 +15,12 @@ const TableOfContents = require('./toc');
   {
     cpInterface = evt.Data;
 
-    console.log('cpInterface.getVariableValue',
-                cpInterface.getVariableValue('cpCmndMute'),
-                window.cpAPIInterface.getVariableValue('cpCmndMute'));
     $.getJSON("../navigation.json", function(json) {
         //console.log('json',json);
         myHeader = new Header(cpInterface,json);
-        myToc = new TableOfContents();
+        myToc = new TableOfContents(cpInterface,json);
         myMenu = new Menu();
-        myNavbar = new Navbar(cpInterface,json);
+        myNavbar = new Navbar(cpInterface,json,myToc,myMenu);
     });
   });
 })();

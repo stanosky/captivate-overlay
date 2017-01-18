@@ -26,6 +26,10 @@
   right:0;
 }
 
+.hide-navbar {
+  display: none;
+}
+
 #mnnavbar {
     position: absolute;
     border-color: #000;
@@ -33,7 +37,7 @@
     height:31px;
     width:100%;
     background-color: #f0f1f1;
-    z-index:101;
+    z-index:102;
 }
 
 #mnnavbar a {
@@ -53,13 +57,22 @@
 }
 
 #prevbtn {
-  right: 94px;
+  right: 90px;
 }
 
 #tocbtn {
-  right: 49px;
+  right: 47px;
 }
 
 #nextbtn {
   right: 4px;
+}
+
+.highlight-btn {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffff00+0,ffffff+100 */
+  background: #ffff00; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffff00 0%, #ffffff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #ffff00 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #ffff00 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 }

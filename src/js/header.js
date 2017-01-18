@@ -4,26 +4,35 @@ let Header = function (interfaceObj,nav){
   let courseName = $('#courseName');
   let slideNumber = $('#slideNumber');
   let slideName = $('#slideName');
-
+  let header = $('#mnheader');
+  let timeoutId;
+  let clearTimeout = function() {
+    window.clearTimeout(timeoutId);
+  };
   let hideHeader = function () {
-    $('#mnheader').slideUp(100);
+    clearTimeout();
+    header.slideUp(100);
   };
 
   let showHeader = function () {
-    $('#mnheader').slideDown(100);
+    clearTimeout();
+    header.slideDown(100);
   };
+
+  let blink = function () {
+    showHeader();
+    timeoutId = window.setTimeout(hideHeader,2000);
+  };
+
   var eventEmitterObj = interfaceObj.getEventEmitter();
   eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
-    //console.log('nav',nav);
     if(nav !== null) {
-      //console.log(e.Data.slideNumber);
       var index = e.Data.slideNumber-1;
       var currSlide = nav.slides[index];
       courseName.html(nav.courseName);
-      //slideNumber.html(e.Data.slideNumber+'.');
       slideNumber.html(currSlide.index+'.');
       slideName.html(currSlide.label);
-
+      blink();
     }
   });
 
@@ -31,8 +40,6 @@ let Header = function (interfaceObj,nav){
   $( "#mnrollover" )
     .mouseenter(function(event) {
       showHeader();
-      //var screenNumber = window.cpAPIInterface.getVariableValue('cpCmndGotoSlide');
-      //window.cpAPIInterface.setVariableValue('cpCmndGotoSlide',screenNumber+1);
       event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     })
     .mouseleave(function(event) {

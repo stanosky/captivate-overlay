@@ -13,7 +13,7 @@ var config = {
   appFile: ['./src/js/overlay.js'],
   courseFiles: 'course/**/*',
   assetsDir: ['src/mn/**/*'],
-  htmlDir: ['src/index.html','src/navigation.json'],
+  htmlDir: ['src/index.html','src/player.html','src/navigation.json'],
   testDir: './test',
   distDir: './dist',
   outputFile: './mn/overlay.js'
@@ -80,5 +80,5 @@ gulp.task('watch', ['build-persistent'], function() {
   getBundler().on('update', function() {
     gulp.start('build-persistent')
   });
-  gulp.watch(['./src/*.html','./src/mn/css/*.css','./src/js/*.js'], ['build-persistent']);
+  gulp.watch(['./src/*.{html,json}','./src/mn/css/*.css','./src/js/*.js'], ['build-persistent']);
 });

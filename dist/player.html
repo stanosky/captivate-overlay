@@ -41,50 +41,53 @@
         </div>
       </div>
       <div id='mntoc'>
-        <h2>Spis treści</h2>
-        <div class="innertoc"></div>
+        <div class='toc-bg'></div>
+        <div class='innertoc'>
+          <h2>Spis treści</h2>
+          <div class="slides-group"></div>
+        </div>
       </div>
       <div id='mnmenu'>
-        <div class="menu-bg"></div>
-        <div class="innermenu">
+        <div class='menu-bg'></div>
+        <div class='innermenu'>
           <h2>Menu</h2>
-          <div class="menu-group">
-            <div id='' class="mbtn1">Spis treści</div>
-            <div class="mbtn1">Materiały</div>
-            <div class="mbtn1">Słowniczek</div>
-            <div class="mbtn1">Bibliografia</div>
+          <div class='menu-group'>
+            <div id='menu-toc' class='mbtn1'><p>Spis treści</p></div>
+            <div id='menu-materials' class='mbtn1 menu-inactive'><p>Materiały</p></div>
+            <div id='menu-glossary' class='mbtn1 menu-inactive'><p>Słowniczek</p></div>
+            <div id='menu-bibliography' class='mbtn1 menu-inactive'><p>Bibliografia</p></div>
           </div>
-          <div class="menu-group">
-            <div class="mbtn2">Pomoc</div>
-            <div class="mbtn2">Drukuj</div>
-            <div class="mbtn2">Zapisz</div>
-            <div class="mbtn2">Wyjdź</div>
+          <div class='menu-group'>
+            <div id='menu-help' class='mbtn2 menu-inactive'><p>Pomoc</p></div>
+            <div id='menu-print' class='mbtn2'><p>Drukuj</p></div>
+            <div id='menu-save' class='mbtn2 menu-inactive'><p>Zapisz</p></div>
+            <div id='menu-exit' class='mbtn2 menu-inactive'><p>Wyjdź</p></div>
           </div>
-          <div class="menu-group">
-            <div class="mbtn3">Dźwięk</div>
-            <div class="mbtn3">Głośność</div>
-            <div class="mbtn3">Animacje</div>
-            <div class="mbtn3">Nagłówek</div>
+          <div class='menu-group'>
+            <div id='menu-sound' class='mbtn3'><p>Dźwięk</p></div>
+            <div id='menu-volume' class='mbtn3'><p>Głośność</p></div>
+            <div id='menu-animations' class='mbtn3 menu-inactive'><p>Animacje</p></div>
+            <div id='menu-header' class='mbtn3 menu-inactive'><p>Nagłówek</p></div>
           </div>
         </div>
       </div>
       <div id='mnnavbar' class='gradient-idle'>
-        <div id='nav-menubtn'>
+        <div id='nav-menu'>
           <img class='sep-l' src='mn/img/separator.svg'>
-          <a href='#'>M</a>
+          <i class="fa fa-bars" aria-hidden="true"></i>
           <img class='sep-r' src='mn/img/separator.svg'>
         </div>
-        <div id='nav-prevbtn'>
+        <div id='nav-prev'>
           <img class='sep-l' src='mn/img/separator.svg'>
-          <a href='#'>&lt;</a>
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
           <img class='sep-r' src='mn/img/separator.svg'>
         </div>
-        <div id='nav-tocbtn'>
-          <a href='#'><span id='tocposition'>-/-</span></a>
+        <div id='nav-toc'>
+          <p><span id='tocposition'>-/-</span></p>
           <img class='sep-r' src='mn/img/separator.svg'>
         </div>
-        <div id='nav-nextbtn'>
-          <a href='#'>&gt;</a>
+        <div id='nav-next'>
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
           <img class='sep-r' src='mn/img/separator.svg'>
         </div>
       </div>

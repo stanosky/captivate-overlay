@@ -2,7 +2,7 @@
 
 let Navbar = function (cpApi,nav,winManager) {
   let navbar = $('#mnnavbar');
-  let buttons = ['nav-menubtn','nav-prevbtn','nav-tocbtn','nav-nextbtn'];
+  let buttons = ['nav-menu','nav-prev','nav-toc','nav-next'];
 
   let hideMenus = function () {
     toc.hide();
@@ -23,10 +23,10 @@ let Navbar = function (cpApi,nav,winManager) {
     let btn = $('#'+b);
     btn.addClass('gradient-idle');
     btn.click(function() {
-      if(this.id === 'nav-nextbtn') next();
-      if(this.id === 'nav-prevbtn') prev();
-      if(this.id === 'nav-tocbtn') winManager.toggle('mntoc');
-      if(this.id === 'nav-menubtn') winManager.toggle('mnmenu');
+      if(this.id === 'nav-next') next();
+      if(this.id === 'nav-prev') prev();
+      if(this.id === 'nav-toc') winManager.toggle('mntoc');
+      if(this.id === 'nav-menu') winManager.toggle('mnmenu');
     });
 
     btn.mouseenter(function(event) {
@@ -42,7 +42,7 @@ let Navbar = function (cpApi,nav,winManager) {
     });
     return btn;
   });
-
+  
   let tocposition = $('#tocposition');
   let eventEmitterObj = cpApi.getEventEmitter();
   //let totalSlides = nav.slides.length;

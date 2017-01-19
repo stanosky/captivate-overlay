@@ -20,46 +20,49 @@
 .innermenu {
   position: absolute;
   top:10%;
-  width: 100%;
-  height: 70%;
-  max-height: 70%;
-  overflow: hidden;
-  box-sizing: border-box;
-  padding-left: 36px;
-  padding-right: 36px;
+  width: 730px;
+  padding-left: 31px;
+  padding-right: 31px;
 }
 
 .menu-group {
   display: inline-block;
-  width:33%;
+  width: 238px;
+  margin-left: 4px;
+  margin-right: 4px;
+  float: left;
 }
 
 .menu-group div {
-  box-sizing: border-box;
-  width:238px;
-  margin: 0 auto 8px auto;
-  text-indent: 0;
-  background-color: #F2F3F6;
-  padding-top: 31px;
-  padding-bottom: 31px;
-  padding-left: 20px;
+  line-height: 62px;
+  margin-bottom: 8px;
+  width: 238px;
 }
 
-.menu-group .mbtn1 {
+.menu-group p {
+  padding-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mbtn1 {
   background-color: #F2F3F6;
 }
 
 .mbtn1:visited {
+  border-style: none;
   background-color: #F2F3F6;
 }
 .mbtn1:hover {
+  border: 0 0 0 6px solid #EF8480;
   background-color: #ffffff;
 }
 .mbtn1:active {
+  border-style: none;
   background-color: #F2F3F6;
 }
 
-.menu-group .mbtn2 {
+.mbtn2 {
   background-color: #E5E7EA;
 }
 
@@ -73,16 +76,20 @@
   background-color: #E5E7EA;
 }
 
-.menu-group .mbtn3 {
+.mbtn3 {
+  color: #E1E1E1;
   background-color: #444756;
 }
 
 .mbtn3:visited {
+  color: #E1E1E1;
   background-color: #444756;
 }
 .mbtn3:hover {
+  color: #E1E1E1;
   background-color: #575863;
 }
 .mbtn3:active {
+  color: #E1E1E1;
   background-color: #444756;
 }

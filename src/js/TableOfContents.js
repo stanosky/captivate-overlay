@@ -7,12 +7,15 @@ let TabelOfContents = function (cpApi,nav) {
 
   let output = [];
   for (var i = 0; i < nav.slides.length; i++) {
-    output.push("<li><a href='javascript:void(0);' onclick='return false;'>"+nav.slides[i].label+"</a></li>");
+    output.push("<div><p><span>"+nav.slides[i].index+
+                ".</span>&nbsp;&nbsp;"+nav.slides[i].label+"</p></div>");
   }
-  $('#mntoc .innertoc').html(output.join(''));
-  $('#mntoc li').click(function(e) {
-    console.log($(this).index());
-    cpApi.setVariableValue('cpCmndGotoSlide',$(this).index());
+  $('#mntoc .slides-group').html(output.join(''));
+  $('.slides-group div').click(function(e) {
+    //console.log($(this).index());
+    let index = $(this).index();
+    cpApi.setVariableValue('cpCmndGotoSlide',index);
+    cpApi.setVariableValue('cpCmndGotoFrameAndResume',0);
     _tw.hide();
   });
 

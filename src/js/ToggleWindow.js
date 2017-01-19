@@ -1,30 +1,36 @@
 'use strict';
 
 let ToggleWindow = function (id) {
-  let element = $(id),
-  visible = false,
+  let _id = id;
+  let _element = $('#'+_id),
+  _visible = false,
+
+  _getId = function() {
+    return _id;
+  },
 
   _isVisible = function() {
-    return visible;
+    return _visible;
   },
 
   _showToc = function() {
-    visible = true;
-    element.slideDown(200);
+    _visible = true;
+    _element.slideDown(200);
   },
 
   _hideToc = function() {
-    visible = false;
-    element.slideUp(200);
+    _visible = false;
+    _element.slideUp(200);
   },
 
   _toggleVisible = function() {
-    visible ? _hideToc() : _showToc();
+    _visible ? _hideToc() : _showToc();
   };
 
-  element.slideUp(0);
+  _element.slideUp(0);
 
   return {
+    getId: _getId,
     isVisible: _isVisible,
     show: _showToc,
     hide: _hideToc,

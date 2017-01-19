@@ -1,8 +1,8 @@
 'use strict';
 
-let Navbar = function (cpApi,nav,toc,menu) {
+let Navbar = function (cpApi,nav,winManager) {
   let navbar = $('#mnnavbar');
-  let buttons = ['menubtn','prevbtn','tocbtn','nextbtn'];
+  let buttons = ['nav-menubtn','nav-prevbtn','nav-tocbtn','nav-nextbtn'];
 
   let hideMenus = function () {
     toc.hide();
@@ -11,22 +11,22 @@ let Navbar = function (cpApi,nav,toc,menu) {
 
   let next = function() {
     cpApi.setVariableValue('cpCmndNextSlide',1);
-    hideMenus();
+    winManager.hide();
   };
 
   let prev = function() {
     cpApi.setVariableValue('cpCmndPrevious',1);
-    hideMenus();
+    winManager.hide();
   };
 
   buttons.map( b => {
     let btn = $('#'+b);
     btn.addClass('gradient-idle');
     btn.click(function() {
-      if(this.id === 'nextbtn') next();
-      if(this.id === 'prevbtn') prev();
-      if(this.id === 'tocbtn') toc.toggle();
-      if(this.id === 'menubtn') menu.toggle();
+      if(this.id === 'nav-nextbtn') next();
+      if(this.id === 'nav-prevbtn') prev();
+      if(this.id === 'nav-tocbtn') winManager.toggle('mntoc');
+      if(this.id === 'nav-menubtn') winManager.toggle('mnmenu');
     });
 
     btn.mouseenter(function(event) {

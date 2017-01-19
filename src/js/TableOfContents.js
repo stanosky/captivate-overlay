@@ -2,8 +2,8 @@
 const ToggleWindow = require('./ToggleWindow');
 
 let TabelOfContents = function (cpApi,nav) {
-  let mntoc = $('#mntoc');
-  let tw = new ToggleWindow('#mntoc');
+  let _mntoc = $('#mntoc');
+  let _tw = new ToggleWindow('mntoc');
 
   let output = [];
   for (var i = 0; i < nav.slides.length; i++) {
@@ -13,14 +13,11 @@ let TabelOfContents = function (cpApi,nav) {
   $('#mntoc li').click(function(e) {
     console.log($(this).index());
     cpApi.setVariableValue('cpCmndGotoSlide',$(this).index());
-    tw.hide();
+    _tw.hide();
   });
 
   return {
-    isVisible: tw.isVisible,
-    show: tw.show,
-    hide: tw.hide,
-    toggle: tw.toggle
+    win: _tw
   }
 
 };

@@ -2,13 +2,10 @@
 const ToggleWindow = require('./ToggleWindow');
 
 let Menu = function () {
-  let tw = new ToggleWindow('#mnmenu');
+  let _tw = new ToggleWindow('mnmenu');
 
   return {
-    isVisible: tw.isVisible,
-    show: tw.show,
-    hide: tw.hide,
-    toggle: tw.toggle
+    win: _tw
   }
 
 };

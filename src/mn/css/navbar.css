@@ -52,19 +52,19 @@
   background-color: #00ff00;
 }
 
-#menubtn {
+#nav-menubtn {
   left: 4px;
 }
 
-#prevbtn {
+#nav-prevbtn {
   right: 90px;
 }
 
-#tocbtn {
+#nav-tocbtn {
   right: 47px;
 }
 
-#nextbtn {
+#nav-nextbtn {
   right: 4px;
 }
 

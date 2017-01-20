@@ -21,17 +21,28 @@
   position: absolute;
   top:10%;
   width: 730px;
-  padding-left: 31px;
-  padding-right: 31px;
+  left:35px;
+  right:35px;
 }
 
 .menu-group {
   display: inline-block;
   width: 238px;
-  margin-left: 4px;
-  margin-right: 4px;
   float: left;
 }
+.menu-group:first-of-type {
+  margin-left: 0;
+  margin-right: 4px;
+}
+.menu-group:nth-of-type(2) {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.menu-group:last-of-type {
+  margin-left: 4px;
+  margin-right: 0;
+}
+
 
 .menu-group div {
   line-height: 62px;

@@ -57,10 +57,6 @@
   margin-bottom: 0;
 }
 
-.menu-inactive {
-  color: #ccc;
-}
-
 .mbtn1 {
   border-left: 6px solid #F2F3F6;
   background-color: #F2F3F6;
@@ -69,7 +65,7 @@
 .mbtn1:visited {
   background-color: #F2F3F6;
 }
-.mbtn1:hover {
+.mbtn1:not(.disabled):hover {
   border-left: 6px solid #EF8480;
   background-color: #ffffff;
 }
@@ -85,7 +81,7 @@
 .mbtn2:visited {
   background-color: #E5E7EA;
 }
-.mbtn2:hover {
+.mbtn2:not(.disabled):hover {
   border-left: 6px solid #E5322C;
   background-color: #ffffff;
 }
@@ -94,6 +90,7 @@
 }
 
 .mbtn3 {
+  overflow: hidden;
   color: #E1E1E1;
   background-color: #444756;
 }
@@ -102,11 +99,36 @@
   color: #E1E1E1;
   background-color: #444756;
 }
-.mbtn3:hover {
+.mbtn3:not(.disabled):hover {
   color: #E1E1E1;
   background-color: #575863;
 }
 .mbtn3:active {
   color: #E1E1E1;
   background-color: #444756;
+}
+
+.mbtn3 p {
+  float:left;
+  width: 85px;
+}
+
+.mbtn3 div {
+  position: relative;
+  float:left;
+  top: 8px;
+
+  width: 125px;
+  height: 46px;
+  border: 1px;
+  border-style: solid;
+  border-color: #84868A;
+}
+
+.mbtn1.disabled,.mbtn2.disabled {
+  color: #ccc;
+}
+.mbtn3.disabled {
+  color: #aaa4a4;
+  background-color: #62667c;
 }

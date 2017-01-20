@@ -9,12 +9,11 @@ let Menu = function (cpApi,winManager) {
   _btns.map(b => {
     let btn = $('#'+b);
     btn.click(function() {
-      if(this.id === 'menu-toc') winManager.show('mntoc');
-      if(this.id === 'menu-exit') cpApi.setVariableValue('cpCmndExit',1);
-      if(this.id === 'menu-print') {
-        //$('#mnoverlay').hide();
-        window.print();
-        //$('#mnoverlay').show();
+      if(!btn.hasClass('menu-inactive')) {
+        if(this.id === 'menu-toc') winManager.show('mntoc');
+        if(this.id === 'menu-exit') cpApi.setVariableValue('cpCmndExit',1);
+        if(this.id === 'menu-print') window.print();
+        if(this.id === 'menu-materials') console.log('materials btn clicked');
       }
     });
   });

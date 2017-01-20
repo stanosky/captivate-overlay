@@ -1,0 +1,8 @@
+@media print {
+  #main_container {
+    left:0 !important;
+  }
+  #mnoverlay {
+    display: none !important;
+  }
+}

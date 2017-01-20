@@ -23,7 +23,7 @@ const TableOfContents = require('./TableOfContents');
         //console.log('json',json);
         myHeader = new Header(cpInterface,json);
         myToc = new TableOfContents(cpInterface,json,winManager);
-        myMenu = new Menu(winManager);
+        myMenu = new Menu(cpInterface,winManager);
         myNavbar = new Navbar(cpInterface,json,winManager);
 
         winManager.addWindow(myToc);

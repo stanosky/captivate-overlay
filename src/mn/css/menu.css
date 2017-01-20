@@ -45,6 +45,7 @@
 
 
 .menu-group div {
+  box-sizing: border-box;
   line-height: 62px;
   margin-bottom: 8px;
   width: 238px;
@@ -56,24 +57,28 @@
   margin-bottom: 0;
 }
 
+.menu-inactive {
+  color: #ccc;
+}
+
 .mbtn1 {
+  border-left: 6px solid #F2F3F6;
   background-color: #F2F3F6;
 }
 
 .mbtn1:visited {
-  border-style: none;
   background-color: #F2F3F6;
 }
 .mbtn1:hover {
-  border: 0 0 0 6px solid #EF8480;
+  border-left: 6px solid #EF8480;
   background-color: #ffffff;
 }
 .mbtn1:active {
-  border-style: none;
   background-color: #F2F3F6;
 }
 
 .mbtn2 {
+  border-left: 6px solid #E5E7EA;
   background-color: #E5E7EA;
 }
 
@@ -81,6 +86,7 @@
   background-color: #E5E7EA;
 }
 .mbtn2:hover {
+  border-left: 6px solid #E5322C;
   background-color: #ffffff;
 }
 .mbtn2:active {

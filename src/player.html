@@ -96,15 +96,9 @@
                   </span>
               </label>
             </div>
-            <div>
-              <input type="checkbox" name="onoffswitch" class="menu-input" id="menu-volume" disabled>
-              <label class="onoffswitch-label" for="menu-volume">
-                  <span class="onoffswitch-main">Głośność</span>
-                  <span class="onoffswitch-border">
-                    <span class="onoffswitch-on">ON</span>
-                    <span class="onoffswitch-off">OFF</span>
-                  </span>
-              </label>
+            <div class="menu-dummy">
+              <input type="range" min="0" max="100" step="1" name="range" id="menu-volume">
+              <label class="" for="menu-volume">Głośność</label>
             </div>
             <div>
               <input type="checkbox" name="onoffswitch" class="menu-input" id="menu-animations" checked>

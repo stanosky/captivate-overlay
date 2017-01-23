@@ -49,6 +49,9 @@
   line-height: 62px;
   margin-bottom: 8px;
   width: 238px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
 }
 
 .menu-group p {
@@ -56,20 +59,34 @@
   margin-top: 0;
   margin-bottom: 0;
 }
-
+.menu-input {
+  display: none;
+}
+.menu-btn {
+  display: block;
+  box-sizing: border-box;
+  float:left;
+  width:100%;
+  height:100%;
+  cursor: pointer;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+.menu-input:disabled + .menu-btn {
+  cursor: default;
+}
 .mbtn1 {
   border-left: 6px solid #F2F3F6;
   background-color: #F2F3F6;
 }
-
-.mbtn1:visited {
+.menu-input:not(:disabled) + .mbtn1:visited {
   background-color: #F2F3F6;
 }
-.mbtn1:not(.disabled):hover {
+.menu-input:not(:disabled) + .mbtn1:hover {
   border-left: 6px solid #EF8480;
   background-color: #ffffff;
 }
-.mbtn1:active {
+.menu-input:not(:disabled) + .mbtn1:active {
   background-color: #F2F3F6;
 }
 
@@ -77,58 +94,91 @@
   border-left: 6px solid #E5E7EA;
   background-color: #E5E7EA;
 }
-
-.mbtn2:visited {
+.menu-input:not(:disabled) + .mbtn2:visited {
   background-color: #E5E7EA;
 }
-.mbtn2:not(.disabled):hover {
+.menu-input:not(:disabled) + .mbtn2:hover {
   border-left: 6px solid #E5322C;
   background-color: #ffffff;
 }
-.mbtn2:active {
+.menu-input:not(:disabled) + .mbtn2:active {
   background-color: #E5E7EA;
 }
 
-.mbtn3 {
-  overflow: hidden;
-  color: #E1E1E1;
-  background-color: #444756;
-}
 
-.mbtn3:visited {
-  color: #E1E1E1;
-  background-color: #444756;
-}
-.mbtn3:not(.disabled):hover {
-  color: #E1E1E1;
-  background-color: #575863;
-}
-.mbtn3:active {
-  color: #E1E1E1;
-  background-color: #444756;
-}
-
-.mbtn3 p {
-  float:left;
-  width: 85px;
-}
-
-.mbtn3 div {
-  position: relative;
-  float:left;
-  top: 8px;
-
-  width: 125px;
-  height: 46px;
-  border: 1px;
-  border-style: solid;
-  border-color: #84868A;
-}
-
-.mbtn1.disabled,.mbtn2.disabled {
+.menu-input:disabled + .mbtn1,
+.menu-input:disabled + .mbtn2 {
   color: #ccc;
 }
-.mbtn3.disabled {
+
+.onoffswitch-label {
+    float:left;
+    width:100%;
+    cursor: pointer;
+    color: #E1E1E1;
+    background-color: #444756;
+    margin-bottom: 8px;
+}
+.menu-input:disabled + .onoffswitch-label {
+  cursor: default;
   color: #aaa4a4;
   background-color: #62667c;
+}
+.onoffswitch-border {
+  position: relative;
+  box-sizing: border-box;
+  float:right;
+  text-align: center;
+  line-height: 21px;
+  top:16px;
+  right:16px;
+  width: 109px;
+  height: 30px;
+  border: 1px solid #E1E1E1;
+}
+.menu-input:disabled + .onoffswitch-label .onoffswitch-border {
+  border: 1px solid #aaa4a4;
+}
+.onoffswitch-main {
+  padding-left: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.onoffswitch-switch {
+  display: inline-block;
+  position: relative;
+  width:50%;
+  height:100%;
+}
+.onoffswitch-on, .onoffswitch-off {
+  display: inline-block;
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+  height: 100%;
+  background-color: #444756;
+  border: 3px solid #444756;
+  color: #E1E1E1;
+  font-size: 16px;
+  font-weight: bold;
+}
+.menu-input:disabled + .onoffswitch-label .onoffswitch-border .onoffswitch-on,
+.menu-input:disabled + .onoffswitch-label .onoffswitch-border .onoffswitch-off {
+  background-color: #62667c;
+  border: 3px solid #62667c;
+  color: #aaa4a4;
+}
+
+
+.menu-input:checked + .onoffswitch-label .onoffswitch-border .onoffswitch-on,
+.menu-input:not(:checked) + .onoffswitch-label .onoffswitch-border .onoffswitch-off {
+  background-color: #E1E1E1;
+  border: 3px solid #444756;
+  color: #444756;
+}
+.menu-input:checked:disabled + .onoffswitch-label .onoffswitch-border .onoffswitch-on,
+.menu-input:not(:checked):disabled + .onoffswitch-label .onoffswitch-border .onoffswitch-off {
+  background-color: #aaa4a4;
+  border: 3px solid #62667c;
+  color: #62667c;
 }

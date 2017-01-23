@@ -52,23 +52,80 @@
         <div class='innermenu'>
           <h2>Menu</h2>
           <div class='menu-group'>
-            <div id='menu-toc' class='mbtn1'><p>Spis treści</p></div>
-            <div id='menu-materials' class='mbtn1 disabled'><p>Materiały</p></div>
-            <div id='menu-glossary' class='mbtn1 disabled'><p>Słowniczek</p></div>
-            <div id='menu-bibliography' class='mbtn1 disabled'><p>Bibliografia</p></div>
-          </div><div class='menu-group'>
-            <div id='menu-help' class='mbtn2 disabled'><p>Pomoc</p></div>
-            <div id='menu-print' class='mbtn2'><p>Drukuj</p></div>
-            <div id='menu-save' class='mbtn2 disabled'><p>Zapisz</p></div>
-            <div id='menu-exit' class='mbtn2'><p>Wyjdź</p></div>
-          </div><div class='menu-group'>
-            <div id='menu-sound' class='mbtn3 group'>
-              <p>Dźwięk</p>
-              <div class="mbtn-inner"></div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-toc" >
+              <label class="menu-btn mbtn1" for="menu-toc">Spis treści</label>
             </div>
-            <div id='menu-volume' class='mbtn3 disabled'><p>Głośność</p><div class="mbtn-inner"></div></div>
-            <div id='menu-animations' class='mbtn3 disabled'><p>Animacje</p><div class="mbtn-inner"></div></div>
-            <div id='menu-header' class='mbtn3 disabled'><p>Nagłówek</p><div class="mbtn-inner"></div></div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-materials" disabled>
+              <label class="menu-btn mbtn1" for="menu-materials">Materiały</label>
+            </div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-glossary" disabled>
+              <label class="menu-btn mbtn1" for="menu-glossary">Słowniczek</label>
+            </div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-bibliography" disabled>
+              <label class="menu-btn mbtn1" for="menu-bibliography">Bibliografia</label>
+            </div>
+          </div><div class='menu-group'>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-help" disabled>
+              <label class="menu-btn mbtn2" for="menu-help">Pomoc</label>
+            </div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-print" >
+              <label class="menu-btn mbtn2" for="menu-print">Drukuj</label>
+            </div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-save" disabled>
+              <label class="menu-btn mbtn2" for="menu-save">Zapisz</label>
+            </div>
+            <div>
+              <input type="button" class="menu-input" name="menubtn" id="menu-exit">
+              <label class="menu-btn mbtn2" for="menu-exit">Wyjdź</label>
+            </div>
+          </div><div class='menu-group'>
+            <div>
+              <input type="checkbox" name="onoffswitch" class="menu-input" id="menu-sound" checked disabled>
+              <label class="onoffswitch-label" for="menu-sound">
+                  <span class="onoffswitch-main">Dźwięk</span>
+                  <span class="onoffswitch-border">
+                    <span class="onoffswitch-on">ON</span>
+                    <span class="onoffswitch-off">OFF</span>
+                  </span>
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" name="onoffswitch" class="menu-input" id="menu-volume" disabled>
+              <label class="onoffswitch-label" for="menu-volume">
+                  <span class="onoffswitch-main">Głośność</span>
+                  <span class="onoffswitch-border">
+                    <span class="onoffswitch-on">ON</span>
+                    <span class="onoffswitch-off">OFF</span>
+                  </span>
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" name="onoffswitch" class="menu-input" id="menu-animations" checked>
+              <label class="onoffswitch-label" for="menu-animations">
+                  <span class="onoffswitch-main">Animacje</span>
+                  <span class="onoffswitch-border">
+                    <span class="onoffswitch-on">ON</span>
+                    <span class="onoffswitch-off">OFF</span>
+                  </span>
+              </label>
+            </div>
+            <div>
+              <input type="checkbox" name="onoffswitch" class="menu-input" id="menu-header" checked>
+              <label class="onoffswitch-label" for="menu-header">
+                  <span class="onoffswitch-main">Nagłówek</span>
+                  <span class="onoffswitch-border">
+                    <span class="onoffswitch-on">ON</span>
+                    <span class="onoffswitch-off">OFF</span>
+                  </span>
+              </label>
+            </div>
           </div>
         </div>
       </div>

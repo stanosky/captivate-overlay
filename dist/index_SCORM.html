@@ -14,10 +14,12 @@
 <link rel="stylesheet" type="text/css" href="mn/css/menu.css">
 <title></title>
 <style type="text/css">#initialLoading{background:url(assets/htmlimages/loader.gif) no-repeat center center;background-color:#ffffff;position:absolute;margin:auto;top:0;left:0;right:0;bottom:0;z-index:10010;}</style>
+
 <script>
 
 var deviceReady = false;
 var initCalled = false ;
+var initialized = false;
 
 function onBodyLoad()
 {
@@ -40,6 +42,8 @@ function onDeviceReady()
 
 function initializeCP()
 {
+	if(initialized)
+		return;
 	initCalled = true ;
 	if(cp.pg && deviceReady === false)
 		return;
@@ -60,6 +64,7 @@ function initializeCP()
 	}
 
 	cpInit();
+	initialized = true;
 }
 
 </script>
@@ -99,7 +104,7 @@ function initializeCP()
 							lCSSLoaded = true;
 							constructDIVs();
 						});
-						var lJSFiles = [  'assets/js/jquery-1.6.1.min.js',
+						var lJSFiles = [  'assets/js/jquery-1.6.1.min.js','scormdriver.js',
 						'assets/js/CPM.js','mn/overlay.js' ];
 						cpXHRJSLoader.js(lJSFiles,function()
 						{

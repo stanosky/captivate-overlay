@@ -8,14 +8,14 @@ let Menu = function (cpApi,winManager) {
   $('#menu-exit').click(e => cpApi.setVariableValue('cpCmndExit',1));
   $('#menu-print').click(e => window.print());
 
-  $('#menu-sound')[0].checked = !(cpApi.getVariableValue('cpCmndMute') === 1);
+  $('#menu-sound')[0].checked = cpApi.getVariableValue('cpCmndMute') === 0;
   $('#menu-sound')[0].onchange = (e) => {
-    cpApi.getVariableValue('cpCmndMute',e.target.checked ? 1 : 0);
+    cpApi.setVariableValue('cpCmndMute',e.target.checked ? 0 : 1);
   };
-
+  console.log("$('#menu-volume')", $('#menu-volume'));
   $('#menu-volume')[0].value = cpApi.getVariableValue('cpCmndVolume');
   $('#menu-volume')[0].onchange = (e) => {
-    cpApi.getVariableValue('cpCmndVolume',e.target.value);
+    cpApi.setVariableValue('cpCmndVolume',e.target.value);
   };
 
   $('#menu-header')[0].checked = winManager.getWindow('mnheader').win.isTurnedOn();

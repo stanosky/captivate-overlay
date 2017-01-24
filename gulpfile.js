@@ -13,7 +13,7 @@ var config = {
   appFile: ['./src/js/overlay.js'],
   courseFiles: 'course/**/*',
   assetsDir: ['src/mn/**/*'],
-  htmlDir: ['src/index.html','src/player.html','src/navigation.json'],
+  htmlDir: ['src/index.html','src/index_SCORM.html','src/player.html','src/navigation.json'],
   testDir: './test',
   distDir: './dist',
   outputFile: './mn/overlay.js'

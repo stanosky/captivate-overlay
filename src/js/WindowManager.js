@@ -35,13 +35,21 @@ let WindowManager = function() {
 
   let _addWindow = function(winObj) {
     _windows.push(winObj);
-  }
+  };
+
+  let _getWindow = function(name) {
+    let _win = _windows.filter(w => {
+      return w.win.getId() === name;
+    });
+    return _win.length > 0 ? _win[0] : null;
+  };
 
   return {
     toggle: _toggleWindow,
     show: _showWindow,
     hide: _hideWindow,
-    addWindow: _addWindow
+    addWindow: _addWindow,
+    getWindow: _getWindow
   }
 }
 

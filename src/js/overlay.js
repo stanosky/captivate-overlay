@@ -22,12 +22,13 @@ const TableOfContents = require('./TableOfContents');
     $.getJSON("../navigation.json", function(json) {
         //console.log('json',json);
         myHeader = new Header(cpInterface,json);
+        winManager.addWindow(myHeader);
         myToc = new TableOfContents(cpInterface,json,winManager);
-        myMenu = new Menu(cpInterface,winManager);
-        myNavbar = new Navbar(cpInterface,json,winManager);
-
         winManager.addWindow(myToc);
+        myMenu = new Menu(cpInterface,winManager);
         winManager.addWindow(myMenu);
+        myNavbar = new Navbar(cpInterface,json,winManager);
+        
         myOverlay.css('display: block;');
     });
   });

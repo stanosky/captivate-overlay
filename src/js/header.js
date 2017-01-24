@@ -1,6 +1,9 @@
 'use strict';
+const ToggleWindow = require('./ToggleWindow');
 
 let Header = function (interfaceObj,nav){
+  let _tw = new ToggleWindow('mnheader');
+
   let courseName = $('#courseName');
   let slideNumber = $('#slideNumber');
   let slideName = $('#slideName');
@@ -11,12 +14,12 @@ let Header = function (interfaceObj,nav){
   };
   let hideHeader = function () {
     clearTimeout();
-    header.slideUp(100);
+    _tw.hide();
   };
 
   let showHeader = function () {
     clearTimeout();
-    header.slideDown(100);
+    _tw.show();
   };
 
   let blink = function () {
@@ -24,7 +27,7 @@ let Header = function (interfaceObj,nav){
     timeoutId = window.setTimeout(hideHeader,2000);
   };
 
-  var eventEmitterObj = interfaceObj.getEventEmitter();
+  let eventEmitterObj = interfaceObj.getEventEmitter();
   eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
     if(nav !== null) {
       var index = e.Data.slideNumber-1;
@@ -47,8 +50,7 @@ let Header = function (interfaceObj,nav){
       event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     });
   return {
-    show: showHeader,
-    hide: hideHeader
+    win: _tw
   }
 };
 

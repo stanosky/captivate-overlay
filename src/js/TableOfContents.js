@@ -7,8 +7,11 @@ let TabelOfContents = function (cpApi,nav) {
 
   let output = [];
   for (var i = 0; i < nav.slides.length; i++) {
-    output.push("<div><p><span>"+nav.slides[i].index+
-                ".</span>&nbsp;&nbsp;"+nav.slides[i].label+"</p></div>");
+    output.push("<div><input type='button' name='toc-item' id='toc-item-"+i+"'>"+
+                "<label for='toc-item-"+i+"'>"+
+                "<i class='fa fa-map-marker fa-lg' aria-hidden='true'></i>"+
+                "<span>"+nav.slides[i].index+".</span>&nbsp;&nbsp;"+
+                nav.slides[i].label+"</label></div>");
   }
   $('#mntoc .slides-group').html(output.join(''));
   $('.slides-group div').click(function(e) {

@@ -12,7 +12,7 @@ let Menu = function (cpApi,winManager) {
   $('#menu-sound')[0].onchange = (e) => {
     cpApi.setVariableValue('cpCmndMute',e.target.checked ? 0 : 1);
   };
-  console.log("$('#menu-volume')", $('#menu-volume'));
+
   $('#menu-volume')[0].value = cpApi.getVariableValue('cpCmndVolume');
   $('#menu-volume')[0].onchange = (e) => {
     cpApi.setVariableValue('cpCmndVolume',e.target.value);

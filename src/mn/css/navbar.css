@@ -1,3 +1,23 @@
+@keyframes highlight {
+  0% {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0f1f1+0,e0e1e5+100 */
+    background: #f0f1f1; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f0f1f1 0%, #e0e1e5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #f0f1f1 0%,#e0e1e5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #f0f1f1 0%,#e0e1e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f1f1', endColorstr='#e0e1e5',GradientType=0 ); /* IE6-9 */
+  }
+  100% {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4f5f5+0,ffffff+100 */
+    background: #f4f5f5; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f4f5f5 0%, #ffffff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #f4f5f5 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #f4f5f5 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f5f5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+
 .gradient-idle{
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f0f1f1+0,e0e1e5+100 */
   background: #f0f1f1; /* Old browsers */
@@ -59,11 +79,12 @@
   line-height: 31px;
   overflow: hidden;
   text-align: center;
+  cursor: pointer;
 }
 #mnnavbar input[type=button] + label:visited {
 
 }
-#mnnavbar input[type=button] + label:hover {
+#mnnavbar input[type=button]:not(:disabled) + label:hover {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4f5f5+0,ffffff+100 */
   background: #f4f5f5; /* Old browsers */
   background: -moz-linear-gradient(top,  #f4f5f5 0%, #ffffff 100%); /* FF3.6-15 */
@@ -73,6 +94,12 @@
 }
 #mnnavbar input[type=button] + label:active {
 
+}
+#mnnavbar input[type=button]:disabled + label{
+  cursor: default;
+}
+#mnnavbar input[type=button]:disabled + label > i {
+  opacity: 0.2;
 }
 
 #nav-menu + label{
@@ -95,11 +122,6 @@
   right: 4px;
 }
 
-.highlight-btn {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffff00+0,ffffff+100 */
-  background: #ffff00; /* Old browsers */
-  background: -moz-linear-gradient(top,  #ffff00 0%, #ffffff 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #ffff00 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #ffff00 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+.highlight {
+  animation: highlight 0.5s infinite alternate;
 }

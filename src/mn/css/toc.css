@@ -41,9 +41,11 @@
 
 .slides-group span {
   font-weight: bolder;
+  padding-left: 20px;
 }
 
-.slides-group div {
+.slides-group div label{
+  display: block;
   text-indent: 20px;
   padding-top: 24px;
   padding-bottom: 24px;
@@ -51,16 +53,20 @@
   background-color: #F2F3F6;
 }
 
+.slides-group div input[type=button] {
+  display: none;
+}
+
 .slides-group div:last-child {
   margin-bottom: 0;
 }
 
-.slides-group div:visited {
+.slides-group input + label:visited {
   background-color: #F2F3F6;
 }
-.slides-group div:hover {
+.slides-group input:not(:disabled) + label:hover {
   background-color: #ffffff;
 }
-.slides-group div:active {
+.slides-group input + label:active {
   background-color: #F2F3F6;
 }

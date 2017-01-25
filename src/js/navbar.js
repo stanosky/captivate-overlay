@@ -2,7 +2,6 @@
 
 let Navbar = function (cpApi,nav,winManager) {
   let navbar = $('#mnnavbar');
-  let buttons = ['nav-menu','nav-prev','nav-toc','nav-next'];
 
   let hideMenus = function () {
     toc.hide();
@@ -19,47 +18,23 @@ let Navbar = function (cpApi,nav,winManager) {
     winManager.hide();
   };
 
-  buttons.map( b => {
-    let btn = $('#'+b);
-    btn.addClass('gradient-idle');
-    btn.click(function() {
-      if(this.id === 'nav-next') next();
-      if(this.id === 'nav-prev') prev();
-      if(this.id === 'nav-toc') winManager.toggle('mntoc');
-      if(this.id === 'nav-menu') winManager.toggle('mnmenu');
-    });
-
-    /*btn.mouseenter(function(event) {
-      let btn = $('#'+event.currentTarget.id);
-      btn.removeClass('gradient-idle');
-      btn.addClass('gradient-over');
-      event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-    }).mouseleave(function(event) {
-      let btn = $('#'+event.currentTarget.id);
-      btn.removeClass('gradient-over');
-      btn.addClass('gradient-idle');
-      event.preventDefault ? event.preventDefault() : (event.returnValue = false);
-    });
-    return btn;*/
-  });
-
   let tocposition = $('#tocposition');
   let eventEmitterObj = cpApi.getEventEmitter();
-  //let totalSlides = nav.slides.length;
   let totalSlides = cpApi.getVariableValue('cpInfoSlideCount');
 
-  eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
-    $('#nextbtn').removeClass('highlight-btn');
-    //check mode
-    //let slideLabel = cpApi.getVariableValue('cpInfoCurrentSlideLabel');
-    //if(slideLabel === '') navbar.addClass('hide-navbar');
-    //else navbar.removeClass('hide-navbar');
+  $('#nav-next').click((e) => next());
+  $('#nav-prev').click((e) => prev());
+  $('#nav-toc').click((e) => winManager.toggle('mntoc'));
+  $('#nav-menu').click((e) => winManager.toggle('mnmenu'));
 
-    //console.log('cpInfoCurrentSlideType',cpApi.getVariableValue('cpInfoCurrentSlideType'));
-    //console.log('cpInfoCurrentSlideLabel',cpApi.getVariableValue('cpInfoCurrentSlideLabel'));
+  eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
+    cpApi.setVariableValue('highlight',0);
+
+    let slideLabel = cpApi.getVariableValue('cpInfoCurrentSlideLabel');
+    $('#nav-next')[0].disabled = slideLabel === 'mnInteraction';
+
     if(nav !== null) {
       let index = e.Data.slideNumber-1;
-      //let currSlide = nav.slides[index];
       let currSlide = cpApi.getVariableValue('cpInfoCurrentSlide');
       tocposition.html(currSlide+'/'+totalSlides);
     }
@@ -67,20 +42,24 @@ let Navbar = function (cpApi,nav,winManager) {
 
 
   eventEmitterObj.addEventListener('CPAPI_VARIABLEVALUECHANGED',function(e) {
-    //let highlight = cpApi.getVariableValue('highlight');
-    console.log(e.Data.varName,e.Data.newVal);
+    if(e.Data.newVal === 1) {
+      $('#nav-next')[0].disabled = false;
+      $('#nav-next + label').addClass('highlight');
+    } else {
+      $('#nav-next + label').removeClass('highlight');
+    }
   },'highlight');
 
   eventEmitterObj.addEventListener('CPAPI_MOVIEPAUSE', function(e) {
-    console.log('CPAPI_MOVIEPAUSE');
-    $('#nextbtn').addClass('highlight-btn');
+    //console.log('CPAPI_MOVIEPAUSE');
+    //$('#nav-next').addClass('highlight');
   });
 
   eventEmitterObj.addEventListener('CPAPI_MOVIESTOP', function(e) {
-    console.log('CPAPI_MOVIESTOP');
+    //console.log('CPAPI_MOVIESTOP');
   });
   eventEmitterObj.addEventListener('CPAPI_INTERACTIVEITEMSUBMIT', function (e) {
-    console.log('CPAPI_INTERACTIVEITEMSUBMIT',e.Data);
+    //console.log('CPAPI_INTERACTIVEITEMSUBMIT',e.Data);
   });
 };
 

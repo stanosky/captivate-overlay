@@ -7,15 +7,6 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f1f1', endColorstr='#e0e1e5',GradientType=0 ); /* IE6-9 */
 }
 
-.gradient-over {
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4f5f5+0,ffffff+100 */
-  background: #f4f5f5; /* Old browsers */
-  background: -moz-linear-gradient(top,  #f4f5f5 0%, #ffffff 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #f4f5f5 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #f4f5f5 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f5f5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-}
-
 .sep-l {
   position: absolute;
   top:0;
@@ -48,7 +39,19 @@
   text-align: center;
 }
 
-#mnnavbar div {
+/*#mnnavbar div {
+  display: inline-block;
+  position: absolute;
+  vertical-align: middle;
+  height:31px;
+  line-height: 31px;
+  overflow: hidden;
+  text-align: center;
+}*/
+#mnnavbar input[type=button] {
+  display: none;
+}
+#mnnavbar input[type=button] + label {
   display: inline-block;
   position: absolute;
   vertical-align: middle;
@@ -57,23 +60,37 @@
   overflow: hidden;
   text-align: center;
 }
+#mnnavbar input[type=button] + label:visited {
 
-#nav-menu {
+}
+#mnnavbar input[type=button] + label:hover {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f4f5f5+0,ffffff+100 */
+  background: #f4f5f5; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f4f5f5 0%, #ffffff 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #f4f5f5 0%,#ffffff 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #f4f5f5 0%,#ffffff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f5f5', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+#mnnavbar input[type=button] + label:active {
+
+}
+
+#nav-menu + label{
   width:40px;
   left: 4px;
 }
 
-#nav-prev {
+#nav-prev + label {
   width:40px;
   right: 124px;
 }
 
-#nav-toc {
+#nav-toc + label {
   right: 44px;
   width: 80px;
 }
 
-#nav-next {
+#nav-next + label {
   width:40px;
   right: 4px;
 }

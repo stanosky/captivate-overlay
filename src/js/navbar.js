@@ -29,7 +29,7 @@ let Navbar = function (cpApi,nav,winManager) {
       if(this.id === 'nav-menu') winManager.toggle('mnmenu');
     });
 
-    btn.mouseenter(function(event) {
+    /*btn.mouseenter(function(event) {
       let btn = $('#'+event.currentTarget.id);
       btn.removeClass('gradient-idle');
       btn.addClass('gradient-over');
@@ -40,9 +40,9 @@ let Navbar = function (cpApi,nav,winManager) {
       btn.addClass('gradient-idle');
       event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     });
-    return btn;
+    return btn;*/
   });
-  
+
   let tocposition = $('#tocposition');
   let eventEmitterObj = cpApi.getEventEmitter();
   //let totalSlides = nav.slides.length;
@@ -65,10 +65,11 @@ let Navbar = function (cpApi,nav,winManager) {
     }
   });
 
+
   eventEmitterObj.addEventListener('CPAPI_VARIABLEVALUECHANGED',function(e) {
-    let total = cpApi.getVariableValue('cpInfoFrameCount');
-    //console.log(e.Data.varName,e.Data.newVal,total);
-  },'cpInfoCurrentFrame');
+    //let highlight = cpApi.getVariableValue('highlight');
+    console.log(e.Data.varName,e.Data.newVal);
+  },'highlight');
 
   eventEmitterObj.addEventListener('CPAPI_MOVIEPAUSE', function(e) {
     console.log('CPAPI_MOVIEPAUSE');
@@ -77,6 +78,9 @@ let Navbar = function (cpApi,nav,winManager) {
 
   eventEmitterObj.addEventListener('CPAPI_MOVIESTOP', function(e) {
     console.log('CPAPI_MOVIESTOP');
+  });
+  eventEmitterObj.addEventListener('CPAPI_INTERACTIVEITEMSUBMIT', function (e) {
+    console.log('CPAPI_INTERACTIVEITEMSUBMIT',e.Data);
   });
 };
 

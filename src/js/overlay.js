@@ -23,17 +23,25 @@ const TableOfContents = require('./TableOfContents');
   {
     cpInterface = evt.Data;
 
-    $.getJSON("../navigation.json", function(nav) {
+    $.getJSON("navigation.json", function(nav) {
         navigation = nav;
         let slidesList = cp.D.project_main.slides.split(',');
-        slidesList.map((slide,index) => {
+        let labels = [];
+        slidesList.map((slide,index,slides) => {
           if(navigation.slides[index] === undefined) {
             navigation.slides[index] = {index:index + 1,label:slide};
           }
           navigation.slides[index].sid = slide;
+          // Do danych slajdu, dodajemy parametr "mnc" określający,
+          // czy ekran został zaliczony (skrót od mncomplete).
+          // Domyślnie nadajemy mu tą samą wartośc co parametr "v" (visited)
+          // z kolejnego slajdu.
+          // Parametr "mnc" będzie później wykorzystywany do stwierdzenia,
+          // czy przejście do następnego ekranu należy zablokowac.
+          let isNextSlide = index + 1 < slides.length;
+          cp.D[slide].mnc = isNextSlide ? cp.D[slides[index+1]].v : false;
         });
 
-        //console.log('navigation',navigation);
         myHeader = new Header(cpInterface,navigation);
         winManager.addWindow(myHeader);
         myToc = new TableOfContents(cpInterface,navigation,winManager);

@@ -1,14 +1,16 @@
 'use strict';
 const ToggleWindow = require('./ToggleWindow');
+const Utils = require('./Utils');
+
 
 let Header = function (interfaceObj,nav){
   let _tw = new ToggleWindow('mnheader');
-
   let courseName = $('#courseName');
   let slideNumber = $('#slideNumber');
   let slideName = $('#slideName');
   let header = $('#mnheader');
   let timeoutId;
+  let currScreen = 0;
   let clearTimeout = function() {
     window.clearTimeout(timeoutId);
   };
@@ -30,12 +32,16 @@ let Header = function (interfaceObj,nav){
   let eventEmitterObj = interfaceObj.getEventEmitter();
   eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
     if(nav !== null) {
-      var index = e.Data.slideNumber-1;
-      var currSlide = nav.slides[index];
-      courseName.html(nav.courseName);
-      slideNumber.html(currSlide.index+'.');
-      slideName.html(currSlide.label);
-      blink();
+      let sceneIndex = e.Data.slideNumber-1;
+      let screenIndex = Utils.findScreenIndex(nav,sceneIndex);
+      let currSlide = nav.screens[screenIndex];
+      if(currScreen !== screenIndex) {
+        currScreen = screenIndex
+        courseName.html(nav.courseName);
+        slideNumber.html(currSlide.nr+'.');
+        slideName.html(currSlide.label);
+        blink();
+      }
     }
   });
 

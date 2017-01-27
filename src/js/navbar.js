@@ -1,12 +1,8 @@
 'use strict';
+import Utils from './Utils';
 
 let Navbar = function (cpApi,nav,winManager) {
   let navbar = $('#mnnavbar');
-
-  let hideMenus = function () {
-    toc.hide();
-    menu.hide();
-  };
 
   let next = function() {
     cpApi.setVariableValue('cpCmndNextSlide',1);
@@ -20,7 +16,6 @@ let Navbar = function (cpApi,nav,winManager) {
 
   let tocposition = $('#tocposition');
   let eventEmitterObj = cpApi.getEventEmitter();
-  let totalSlides = cpApi.getVariableValue('cpInfoSlideCount');
 
   $('#nav-next').click((e) => next());
   $('#nav-prev').click((e) => prev());
@@ -32,18 +27,21 @@ let Navbar = function (cpApi,nav,winManager) {
 
     let slideLabel = cpApi.getVariableValue('cpInfoCurrentSlideLabel');
     let slideNumber = e.Data.slideNumber;
-    let currSlideId = nav.slides[slideNumber - 1].sid;
+    let slideIndex = slideNumber - 1;
+    let screenNumber = Utils.findScreenIndex(nav,slideIndex) + 1;
+    let totalSlides = nav.screens.length;
+    let currSlideId = nav.sids[slideIndex];
     let isCurrSlideCompleted = cp.D[currSlideId].mnc;
 
     $('#nav-next')[0].disabled = slideLabel === 'mnInteraction' && !isCurrSlideCompleted;
 
-    tocposition.html(slideNumber+'/'+totalSlides);
+    tocposition.html(screenNumber+'/'+totalSlides);
   });
 
 
   eventEmitterObj.addEventListener('CPAPI_VARIABLEVALUECHANGED',function(e) {
     let slideNumber = cpApi.getVariableValue('cpInfoCurrentSlide');
-    let currSlideId = nav.slides[slideNumber-1].sid;
+    let currSlideId = nav.sids[slideNumber-1];
     if(e.Data.newVal === 1) {
       cp.D[currSlideId].mnc = true;
       $('#nav-next')[0].disabled = false;
@@ -55,7 +53,7 @@ let Navbar = function (cpApi,nav,winManager) {
 
   eventEmitterObj.addEventListener('CPAPI_VARIABLEVALUECHANGED',function(e) {
     let slideNumber = cpApi.getVariableValue('cpInfoCurrentSlide');
-    let currSlideId = nav.slides[slideNumber-1].sid;
+    let currSlideId = nav.sids[slideNumber-1];
     //console.log('should stop',cp.D[currSlideId].to-1,e.Data.newVal);
     if(cp.D[currSlideId].to-1 === e.Data.newVal) {
       cpApi.pause();

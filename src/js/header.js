@@ -3,7 +3,7 @@ const ToggleWindow = require('./ToggleWindow');
 const Utils = require('./Utils');
 
 
-let Header = function (interfaceObj,nav){
+let Header = function (cpApi,nav){
   let _tw = new ToggleWindow('mnheader');
   let courseName = $('#courseName');
   let slideNumber = $('#slideNumber');
@@ -29,22 +29,27 @@ let Header = function (interfaceObj,nav){
     timeoutId = window.setTimeout(hideHeader,2000);
   };
 
-  let eventEmitterObj = interfaceObj.getEventEmitter();
-  eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',function(e){
-    if(nav !== null) {
-      let sceneIndex = e.Data.slideNumber-1;
-      let screenIndex = Utils.findScreenIndex(nav,sceneIndex);
-      let currSlide = nav.screens[screenIndex];
-      if(currScreen !== screenIndex) {
-        currScreen = screenIndex
-        courseName.html(nav.courseName);
-        slideNumber.html(currSlide.nr+'.');
-        slideName.html(currSlide.label);
-        blink();
-      }
+  let update = function(screenInfo) {
+    if(currScreen !== screenInfo.index) {
+      currScreen = screenInfo.index;
+      courseName.html(nav.courseName);
+      slideNumber.html(screenInfo.nr+'.');
+      slideName.html(screenInfo.label);
+      blink();
     }
-  });
+  }
 
+  let updateHandler = function(e){
+    let sceneIndex = e.Data.slideNumber-1;
+    let screenInfo = Utils.getCurrentScreenInfo(nav,sceneIndex);
+
+    update(screenInfo);
+  };
+
+  let eventEmitterObj = cpApi.getEventEmitter();
+  eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',updateHandler);
+
+  //update(cpApi.getVariableValue('cpInfoCurrentSlide') - 1);
   $('#mnheader').slideUp(0);
   $( "#mnrollover" )
     .mouseenter(function(event) {

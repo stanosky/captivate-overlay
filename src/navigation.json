@@ -52,9 +52,12 @@
     {"nr":25,"label":"Atuty Pakietu Turystycznego oraz porady odnośnie klientów.",
       "scenes":[85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104]},
     {"nr":26,"label":"Test końcowy.",
-      "scenes":[105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121],
-      "hidden":[122,123]},
+      "scenes":[105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121]},
     {"nr":27,"label":"Zakończenie.",
       "scenes":[124]}
+  ],
+  "hidden":[
+    {"nr":26,"label":"Test końcowy.","prev":121,"next":124,"scenes":[122]},
+    {"nr":26,"label":"Test końcowy.","prev":121,"next":124,"scenes":[123]}
   ]
 }

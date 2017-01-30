@@ -17,7 +17,6 @@ const TableOfContents = require('./TableOfContents');
   let navigation;
 
   myOverlay = $('#mnoverlay');
-  myOverlay.css('display: none;');
 
   window.addEventListener("moduleReadyEvent", function(evt)
   {
@@ -45,7 +44,6 @@ const TableOfContents = require('./TableOfContents');
         winManager.addWindow(myMenu);
         myNavbar = new Navbar(cpInterface,navigation,winManager);
 
-        myOverlay.css('display: block;');
     });
   });
 })();

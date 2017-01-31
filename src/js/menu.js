@@ -1,10 +1,10 @@
 'use strict';
 const ToggleWindow = require('./ToggleWindow');
 
-let Menu = function (cpApi,winManager) {
+let Menu = function (cpApi,nav) {
   let _tw = new ToggleWindow('mnmenu');
 
-  $('#menu-toc').click(e => winManager.show('mntoc'));
+  $('#menu-toc').click(e => nav.showWindow('mntoc'));
   $('#menu-exit').click(e => cpApi.setVariableValue('cpCmndExit',1));
   $('#menu-print').click(e => window.print());
 
@@ -18,13 +18,16 @@ let Menu = function (cpApi,winManager) {
     cpApi.setVariableValue('cpCmndVolume',e.target.value);
   };
 
-  $('#menu-header')[0].checked = winManager.getWindow('mnheader').win.isTurnedOn();
+  $('#menu-header')[0].checked = nav.getWindow('mnheader').win.isTurnedOn();
   $('#menu-header')[0].onchange = (e) => {
-    winManager.getWindow('mnheader').win.setTurnedOn(e.target.checked);
+    nav.getWindow('mnheader').win.setTurnedOn(e.target.checked);
   }
-
+  let _update = function() {
+    //console.log('update menu');
+  };
   return {
-    win: _tw
+    win: _tw,
+    update: _update
   };
 
 };

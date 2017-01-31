@@ -10,7 +10,8 @@ let Header = function (cpApi,nav){
   let slideName = $('#slideName');
   let header = $('#mnheader');
   let timeoutId;
-  let currScreen = 0;
+  let currScreen;
+
   let clearTimeout = function() {
     window.clearTimeout(timeoutId);
   };
@@ -29,27 +30,6 @@ let Header = function (cpApi,nav){
     timeoutId = window.setTimeout(hideHeader,2000);
   };
 
-  let update = function(screenInfo) {
-    if(currScreen !== screenInfo.index) {
-      currScreen = screenInfo.index;
-      courseName.html(nav.courseName);
-      slideNumber.html(screenInfo.nr+'.');
-      slideName.html(screenInfo.label);
-      blink();
-    }
-  }
-
-  let updateHandler = function(e){
-    let sceneIndex = e.Data.slideNumber-1;
-    let screenInfo = Utils.getCurrentScreenInfo(nav,sceneIndex);
-
-    update(screenInfo);
-  };
-
-  let eventEmitterObj = cpApi.getEventEmitter();
-  eventEmitterObj.addEventListener('CPAPI_SLIDEENTER',updateHandler);
-
-  //update(cpApi.getVariableValue('cpInfoCurrentSlide') - 1);
   $('#mnheader').slideUp(0);
   $( "#mnrollover" )
     .mouseenter(function(event) {
@@ -60,8 +40,21 @@ let Header = function (cpApi,nav){
       hideHeader();
       event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     });
+
+  let _update = function() {
+    let screenInfo = nav.getScreenInfo();
+    if(currScreen !== screenInfo.index) {
+      currScreen = screenInfo.index;
+      courseName.html(nav.getCourseName());
+      slideNumber.html(screenInfo.nr+'.');
+      slideName.html(screenInfo.label);
+      blink();
+    }
+  };
+
   return {
-    win: _tw
+    win: _tw,
+    update: _update
   }
 };
 

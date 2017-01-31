@@ -71,7 +71,7 @@ let getCurrentScreenInfo = function(nav,sceneIndex) {
   let screens = _getScreensArray(nav,sceneIndex);
   let index = _findScreenIndex(screens,sceneIndex);
   let screen = index >= 0 ? screens[index] : null;
-  console.log('getCurrentScreenInfo',index,screen,sceneIndex);
+  //console.log('getCurrentScreenInfo',index,screen,sceneIndex);
   return {
     index: index,
     nr: screen.nr,

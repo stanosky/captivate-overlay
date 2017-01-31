@@ -5,8 +5,10 @@ const Header = require('./Header');
 const Navbar = require('./Navbar');
 const Menu = require('./Menu');
 const TableOfContents = require('./TableOfContents');
+const Navigation = require('./Navigation');
+const InteractionUtils = require('./InteractionUtils');
 
-(function(){
+global.mn = (function(){
   let cpInterface;
   let myOverlay;
   let winManager = new WindowManager();
@@ -14,7 +16,8 @@ const TableOfContents = require('./TableOfContents');
   let myToc;
   let myMenu;
   let myNavbar;
-  let navigation;
+  let myNavigation;
+  let interactionUtils = new InteractionUtils(window.cpAPIInterface);
 
   myOverlay = $('#mnoverlay');
 
@@ -22,28 +25,27 @@ const TableOfContents = require('./TableOfContents');
   {
     cpInterface = evt.Data;
 
-    $.getJSON("navigation.json", function(nav) {
-        navigation = nav;
-        navigation.sids = cp.D.project_main.slides.split(',');
-        navigation.sids.map((sid,index,arr) => {
-          // Do danych slajdu, dodajemy parametr "mnc" określający,
-          // czy ekran został zaliczony (skrót od mncomplete).
-          // Domyślnie nadajemy mu tą samą wartośc co parametr "v" (visited)
-          // z kolejnego slajdu.
-          // Parametr "mnc" będzie później wykorzystywany do stwierdzenia,
-          // czy przejście do następnego ekranu należy zablokowac.
-          let isNextSlide = index + 1 < arr.length;
-          cp.D[sid].mnc = isNextSlide ? cp.D[arr[index+1]].v : false;
-        });
+    $.getJSON("navigation.json", function(data) {
+        myNavigation = new Navigation(cpInterface,winManager,data);
 
-        myHeader = new Header(cpInterface,navigation);
+        myHeader = new Header(cpInterface,myNavigation);
         winManager.addWindow(myHeader);
-        myToc = new TableOfContents(cpInterface,navigation,winManager);
+        myNavigation.addObserver(myHeader);
+        myToc = new TableOfContents(cpInterface,myNavigation);
         winManager.addWindow(myToc);
-        myMenu = new Menu(cpInterface,winManager);
+        myNavigation.addObserver(myToc);
+        myMenu = new Menu(cpInterface,myNavigation);
         winManager.addWindow(myMenu);
-        myNavbar = new Navbar(cpInterface,navigation,winManager);
+        myNavigation.addObserver(myMenu);
+        myNavbar = new Navbar(cpInterface,myNavigation);
+        myNavigation.addObserver(myNavbar);
 
     });
   });
+
+  return {
+    int:interactionUtils
+  }
 })();
+
+module.exports = mn;

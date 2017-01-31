@@ -17,7 +17,7 @@ global.mn = (function(){
   let myMenu;
   let myNavbar;
   let myNavigation;
-  let interactionUtils = new InteractionUtils(window.cpAPIInterface);
+  let interactionUtils = new InteractionUtils();
 
   myOverlay = $('#mnoverlay');
 

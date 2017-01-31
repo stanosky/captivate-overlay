@@ -2,20 +2,32 @@
 
 let InteractionUtils = function(cpApi) {
 
-  let _isVarEqual = function(variable,value) {
-    return cpApi.getVariableValue(variable) === value;
+  let _vars = [],_corr = [];
+
+  let _setVariables = function(array) {
+    _vars = array;
+  }
+
+  let _setCorrect = function(array) {
+    _corr = array;
   };
 
-  let _areVarsEqual = function(variables,values) {
-    var equalVars = variables.filter((v,i) => {
-      return _isVarEqual(v,values[i]);
+  let _isVarEqual = function(index) {
+    return cpAPIInterface.getVariableValue(_vars[index]) == _corr[index];
+  };
+
+  let _areVarsEqual = function() {
+    var equalVars = _vars.filter((v,i) => {
+      return _isVarEqual(i);
     });
-    return equalVars.length === variables.length;
+    return equalVars.length === _vars.length;
   };
 
   return  {
-    isVarEqual:_isVarEqual,
-    areVarsEqual:_areVarsEqual
+    setVariables: _setVariables,
+    setCorrect: _setCorrect,
+    isVarEqual: _isVarEqual,
+    areVarsEqual: _areVarsEqual
   }
 };
 

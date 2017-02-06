@@ -27,6 +27,15 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f1f1', endColorstr='#e0e1e5',GradientType=0 ); /* IE6-9 */
 }
 
+/*
+ * It prevents blinking of absolute-positioned elements inside hardware-accelerated container
+ * http://help.dimsemenov.com/discussions/problems/858-weird-bug-in-chrome
+ */
+.webkit-scale-blink-fix {
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+}
+
 .sep-l {
   position: absolute;
   top:0;

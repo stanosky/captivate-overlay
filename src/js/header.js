@@ -3,29 +3,30 @@ const ToggleWindow = require('./ToggleWindow');
 const Utils = require('./Utils');
 
 
-let Header = function (cpApi,nav){
-  let _tw = new ToggleWindow('mnheader');
-  let courseName = $('#courseName');
-  let slideNumber = $('#slideNumber');
-  let slideName = $('#slideName');
-  let header = $('#mnheader');
+const Header = function (cpApi,nav){
+  const _tw = new ToggleWindow('mnheader');
+  const courseName = $('#courseName');
+  const slideNumber = $('#slideNumber');
+  const slideName = $('#slideName');
+  const header = $('#mnheader');
   let timeoutId;
   let currScreen;
 
-  let clearTimeout = function() {
+  const clearTimeout = function() {
     window.clearTimeout(timeoutId);
   };
-  let hideHeader = function () {
+
+  const hideHeader = function () {
     clearTimeout();
     _tw.hide();
   };
 
-  let showHeader = function () {
+  const showHeader = function () {
     clearTimeout();
     _tw.show();
   };
 
-  let blink = function () {
+  const blink = function () {
     showHeader();
     timeoutId = window.setTimeout(hideHeader,2000);
   };
@@ -41,7 +42,7 @@ let Header = function (cpApi,nav){
       event.preventDefault ? event.preventDefault() : (event.returnValue = false);
     });
 
-  let _update = function() {
+  const _update = function() {
     let screenInfo = nav.getScreenInfo();
     if(currScreen !== screenInfo.index) {
       currScreen = screenInfo.index;

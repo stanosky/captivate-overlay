@@ -1,6 +1,6 @@
 'use strict';
 
-let ToggleWindow = function (id) {
+const ToggleWindow = function (id) {
   let _id = id;
   let _element = $('#'+_id),
   _visible = false,

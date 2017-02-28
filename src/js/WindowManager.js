@@ -1,10 +1,10 @@
 'use strict';
 
-let WindowManager = function() {
+const WindowManager = function() {
   let _windows = [];
   let _current = null;
 
-  let _toggleWindow = function (wid) {
+  const _toggleWindow = function (wid) {
     if(_current !== wid) _hideWindow(_current);
     _windows.map(w => {
       if(w.win.getId() === wid) {
@@ -14,7 +14,7 @@ let WindowManager = function() {
     });
   };
 
-  let _showWindow = function (wid) {
+  const _showWindow = function (wid) {
     if(_current !== null && _current !== wid) _hideWindow(_current);
     _windows.map(w => {
       if(w.win.getId() === wid) {
@@ -24,7 +24,7 @@ let WindowManager = function() {
     });
   };
 
-  let _hideWindow = function (wid) {
+  const _hideWindow = function (wid) {
     _windows.map(w => {
       if(w.win.getId() === wid || wid === undefined || wid === null) {
         w.win.hide();
@@ -33,11 +33,11 @@ let WindowManager = function() {
     _current = null;
   };
 
-  let _addWindow = function(winObj) {
+  const _addWindow = function(winObj) {
     _windows.push(winObj);
   };
 
-  let _getWindow = function(name) {
+  const _getWindow = function(name) {
     let _win = _windows.filter(w => {
       return w.win.getId() === name;
     });

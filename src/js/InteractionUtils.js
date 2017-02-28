@@ -1,22 +1,22 @@
 'use strict';
 
-let InteractionUtils = function(cpApi) {
+const InteractionUtils = function(cpApi) {
 
   let _vars = [],_corr = [];
 
-  let _setVariables = function(array) {
+  const _setVariables = function(array) {
     _vars = array;
   }
 
-  let _setCorrect = function(array) {
+  const _setCorrect = function(array) {
     _corr = array;
   };
 
-  let _isVarEqual = function(index) {
+  const _isVarEqual = function(index) {
     return cpAPIInterface.getVariableValue(_vars[index]) == _corr[index];
   };
 
-  let _areVarsEqual = function() {
+  const _areVarsEqual = function() {
     var equalVars = _vars.filter((v,i) => {
       return _isVarEqual(i);
     });

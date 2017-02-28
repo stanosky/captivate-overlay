@@ -1,9 +1,9 @@
 'use strict';
 const ToggleWindow = require('./ToggleWindow');
 
-let TabelOfContents = function (cpApi,nav) {
-  let _mntoc = $('#mntoc');
-  let _tw = new ToggleWindow('mntoc');
+const TabelOfContents = function (cpApi,nav) {
+  const _mntoc = $('#mntoc');
+  const _tw = new ToggleWindow('mntoc');
 
   let output = [];
   let screens = nav.getScreens();
@@ -24,7 +24,7 @@ let TabelOfContents = function (cpApi,nav) {
     _tw.hide();
   });
 
-  let _update = function() {
+  const _update = function() {
     //console.log('update toc');
   };
 

@@ -1,7 +1,9 @@
 'use strict';
 const Utils = require('./Utils');
+//const AgentJuggler = require('./AgentJuggler');
 
-let Navigation = function(cpApi,winManager,data) {
+const Navigation = function(cpApi,winManager,data) {
+  //const ag = new AgentJuggler();
   let observers = [];
   let eventEmitterObj = cpApi.getEventEmitter();
   let navData = data;
@@ -15,61 +17,61 @@ let Navigation = function(cpApi,winManager,data) {
   let screenInfo;
 
 
-  let _next = function() {
+  const _next = function() {
     cpApi.setVariableValue('cpCmndGotoSlide',screenInfo.next);
     winManager.hide();
   };
 
-  let _prev = function() {
+  const _prev = function() {
     cpApi.setVariableValue('cpCmndGotoSlide',screenInfo.prev);
     winManager.hide();
   };
 
-  let _addObserver = function(obj) {
+  const _addObserver = function(obj) {
     observers.push(obj);
   };
 
-  let _getScreens = function() {
+  const _getScreens = function() {
     return navData.screens;
   };
 
-  let _isCompleted = function() {
+  const _isCompleted = function() {
     return cp.D[cpSlideId].mnc
   };
 
-  let _isInteraction = function() {
+  const _isInteraction = function() {
     return cpSlideLabel === 'mnInteraction' && !_isCompleted();
   };
 
-  let _isQuiz = function() {
+  const _isQuiz = function() {
     return cpSlideLabel === 'mnQuiz';
   };
 
-  let _getScreenInfo = function() {
+  const _getScreenInfo = function() {
     return screenInfo;
   }
 
-  let _toggleWindow = function(winName) {
+  const _toggleWindow = function(winName) {
     winManager.toggle(winName);
   };
 
-  let _getCourseName = function() {
+  const _getCourseName = function() {
     return navData.courseName;
   };
 
-  let _getWindow = function(winName) {
+  const _getWindow = function(winName) {
     return winManager.getWindow(winName);
   };
 
-  let _showWindow = function(winName) {
+  const _showWindow = function(winName) {
     return winManager.show(winName);
   };
 
-  let _hideWindow = function(winName) {
+  const _hideWindow = function(winName) {
     return winManager.hide(winName);
   };
 
-  let _onSlideEnter = function(e){
+  const _onSlideEnter = function(e){
     cpSlideLabel = cpApi.getVariableValue('cpInfoCurrentSlideLabel');
     cpSlideNumber = cpApi.getVariableValue('cpInfoCurrentSlide');
     cpSlideId = navData.sids[cpSlideNumber-1];
@@ -83,29 +85,37 @@ let Navigation = function(cpApi,winManager,data) {
 
     cpApi.setVariableValue('highlight',0);
     cpApi.play();
+    //ag.start();
   };
 
-  let _onSlideExit = function(e) {
+  const _onSlideExit = function(e) {
     eventEmitterObj.removeEventListener('CPAPI_VARIABLEVALUECHANGED',_onHighlight,'highlight');
     eventEmitterObj.removeEventListener('CPAPI_VARIABLEVALUECHANGED',_onFrameChange,'cpInfoCurrentFrame');
+    //ag.clear();
   };
 
-  let _onHighlight = function(e) {
+  const _onHighlight = function(e) {
     if(e.Data.newVal === 1) cp.D[cpSlideId].mnc = true;
     _update();
   };
 
-  let _onFrameChange = function(e) {
+  const _onFrameChange = function(e) {
     let isBlocked = _isQuiz() || _isInteraction();
+    let endFrame = cp.D[cpSlideId].to-1;
+    let currFrame = e.Data.newVal;
     //console.log('from',cp.D[cpSlideId].from,"to",cp.D[cpSlideId].to);
-    if(cp.D[cpSlideId].to-1 === e.Data.newVal && !isBlocked) {
+    if(currFrame >= endFrame) {
+      eventEmitterObj.removeEventListener('CPAPI_VARIABLEVALUECHANGED',_onFrameChange,'cpInfoCurrentFrame');
       cpApi.pause();
-      if(!_isInteraction() && !_isQuiz()) cpApi.setVariableValue('highlight',1);
       _update();
+      //ag.stop();
+      if(!isBlocked) cpApi.setVariableValue('highlight',1);
+    } else {
+      //ag.juggle();
     }
   };
 
-  let _update = function() {
+  const _update = function() {
     observers.map(o => o.update());
   };
 

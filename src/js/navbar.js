@@ -1,9 +1,11 @@
 'use strict';
 import Utils from './Utils';
 
-let Navbar = function (cpApi,nav) {
-  let navbar = $('#mnnavbar');
-  let tocposition = $('#tocposition');
+const Navbar = function (cpApi,nav) {
+  const navbar = $('#mnnavbar');
+  const tocposition = $('#tocposition');
+  const progress = $('#lesson-progress');
+  const progressLabel = $('#lesson-progress-label strong');
 
   function _update() {
     //console.log('update navbar');
@@ -24,6 +26,19 @@ let Navbar = function (cpApi,nav) {
     }
 
     tocposition.html((screenInfo.nr) + '/' + totalScreens);
+    if(isQuiz) {
+      progress.val(100);
+      progressLabel.html('Scena 1 z 1');
+    } else {
+      let currScene = screenInfo.currScene + 1;
+      if(screenInfo.currScene > -1) {
+        progress.val((currScene / screenInfo.totalScenes) * 100);
+        progressLabel.html('Scena ' + currScene + ' z ' + screenInfo.totalScenes);
+      } else {
+        progress.val(100);
+        progressLabel.html('');
+      }
+    }
   }
 
 

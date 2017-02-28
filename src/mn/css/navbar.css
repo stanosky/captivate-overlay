@@ -134,3 +134,52 @@
 .highlight {
   animation: highlight 0.5s infinite alternate;
 }
+
+.Progress {
+    position: absolute;
+    width: 560px;
+    height: 16px;
+    top: 8px;
+    left: 60px;
+}
+.Progress-main {
+    position: absolute;
+    background-color: #cccccc;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: #cccccc solid 2px;
+}
+.Progress-main::-moz-progress-bar {
+    background: #009699;
+}
+.Progress-main::-webkit-progress-bar {
+    background: #cccccc;
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;*/
+}
+.Progress-main::-webkit-progress-value {
+    background: #009699;
+}
+.Progress-main::-ms-fill {
+    background: #009699;
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;*/
+    border: 0;
+}
+.Progress-bar {
+    top: 8px;
+    background-color: #F2F2F2;
+    height: 16px;
+}
+.Progress-value {
+    background-color: #009699;
+    display: block;
+    height: 16px;
+}
+.Progress-label {
+    position: absolute;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    width: 100%;
+    /*color: #fff;*/
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-let _findScreenIndex = function(arr,sceneIndex) {
+const _findScreenIndex = function(arr,sceneIndex) {
   let screensLen = arr.length;
   let output;
   for (var i = 0; i < screensLen; i++) {
@@ -12,12 +12,12 @@ let _findScreenIndex = function(arr,sceneIndex) {
   return -1;
 };
 
-let _getScreensArray = function(nav,currScene) {
+const _getScreensArray = function(nav,currScene) {
   let isHidden = _isSceneHidden(nav.hidden,currScene);
   return isHidden ? nav.hidden : nav.screens;
 };
 
-let _isSceneHidden = function(arr,sceneIndex) {
+const _isSceneHidden = function(arr,sceneIndex) {
   return arr.filter(scr => {
     return scr.scenes.filter(scene => {
       return scene === sceneIndex;
@@ -25,7 +25,7 @@ let _isSceneHidden = function(arr,sceneIndex) {
   }).length > 0;
 };
 
-let _getPrevSceneIndex = function(arr,currScene) {
+const _getPrevSceneIndex = function(arr,currScene) {
   let screenIndex = _findScreenIndex(arr,currScene);
   let screen, scenes, sceneIndex;
 
@@ -46,7 +46,7 @@ let _getPrevSceneIndex = function(arr,currScene) {
   return -1;
 };
 
-let _getNextSceneIndex = function(arr,currScene) {
+const _getNextSceneIndex = function(arr,currScene) {
   let screenIndex = _findScreenIndex(arr,currScene);
   let screen, scenes, sceneIndex;
 
@@ -67,7 +67,7 @@ let _getNextSceneIndex = function(arr,currScene) {
   return -1;
 };
 
-let getCurrentScreenInfo = function(nav,sceneIndex) {
+const getCurrentScreenInfo = function(nav,sceneIndex) {
   let screens = _getScreensArray(nav,sceneIndex);
   let index = _findScreenIndex(screens,sceneIndex);
   let screen = index >= 0 ? screens[index] : null;
@@ -76,6 +76,8 @@ let getCurrentScreenInfo = function(nav,sceneIndex) {
     index: index,
     nr: screen.nr,
     label: screen.label,
+    currScene: screen.scenes.indexOf(sceneIndex),
+    totalScenes: screen.scenes.length,
     prev: _getPrevSceneIndex(screens,sceneIndex),
     next: _getNextSceneIndex(screens,sceneIndex)
   };

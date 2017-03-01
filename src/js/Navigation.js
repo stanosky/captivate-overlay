@@ -103,10 +103,10 @@ const Navigation = function(cpApi,winManager,data) {
     let isBlocked = _isQuiz() || _isInteraction();
     let endFrame = cp.D[cpSlideId].to-1;
     let currFrame = e.Data.newVal;
-    //console.log('from',cp.D[cpSlideId].from,"to",cp.D[cpSlideId].to);
+    console.log('from',cp.D[cpSlideId].from,"to",cp.D[cpSlideId].to);
     if(currFrame >= endFrame) {
       eventEmitterObj.removeEventListener('CPAPI_VARIABLEVALUECHANGED',_onFrameChange,'cpInfoCurrentFrame');
-      cpApi.pause();
+      if(!_isQuiz()) cpApi.pause();
       _update();
       //ag.stop();
       if(!isBlocked) cpApi.setVariableValue('highlight',1);

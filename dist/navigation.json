@@ -51,12 +51,12 @@
       "scenes":[77,78,79,80,81,82,83,84]},
     {"nr":25,"label":"Atuty Pakietu Turystycznego oraz porady odnośnie klientów.",
       "scenes":[85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105]},
-    {"nr":26,"label":"Test końcowy.",
-      "scenes":[106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122]},
-    {"nr":27,"label":"Zakończenie.","prev":106,"next":-1,"scenes":[125]}
+    {"nr":26,"label":"Test końcowy.","prev":105,"next":106,
+      "scenes":[107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123]},
+    {"nr":27,"label":"Zakończenie.","prev":107,"next":-1,"scenes":[106]}
   ],
   "hidden":[
-    {"nr":26,"label":"Test końcowy.","prev":106,"next":125,"scenes":[123]},
-    {"nr":26,"label":"Test końcowy.","prev":106,"next":125,"scenes":[124]}
+    {"nr":26,"label":"Test końcowy.","prev":107,"next":106,"scenes":[124]},
+    {"nr":26,"label":"Test końcowy.","prev":107,"next":106,"scenes":[125]}
   ]
 }

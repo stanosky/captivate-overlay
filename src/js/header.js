@@ -49,7 +49,7 @@ const Header = function (cpApi,nav){
       courseName.html(nav.getCourseName());
       slideNumber.html(screenInfo.nr+'.');
       slideName.html(screenInfo.label);
-      blink();
+      //blink();
     }
   };
 

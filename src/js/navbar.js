@@ -28,15 +28,15 @@ const Navbar = function (cpApi,nav) {
     tocposition.html((screenInfo.nr) + '/' + totalScreens);
     if(isQuiz) {
       progress.val(100);
-      progressLabel.html('Scena 1 z 1');
+      //progressLabel.html('Scena 1 z 1');
     } else {
       let currScene = screenInfo.currScene + 1;
       if(screenInfo.currScene > -1) {
         progress.val((currScene / screenInfo.totalScenes) * 100);
-        progressLabel.html('Scena ' + currScene + ' z ' + screenInfo.totalScenes);
+        //progressLabel.html('Scena ' + currScene + ' z ' + screenInfo.totalScenes);
       } else {
         progress.val(100);
-        progressLabel.html('');
+        //progressLabel.html('');
       }
     }
   }

@@ -10,7 +10,6 @@ const InteractionUtils = require('./InteractionUtils');
 
 global.mn = (function(){
   let cpInterface;
-  //let myOverlay;
   let winManager = new WindowManager();
   let myHeader;
   let myToc;
@@ -19,21 +18,23 @@ global.mn = (function(){
   let myNavigation;
   let interactionUtils = new InteractionUtils();
 
-  /*function onResize(e) {
+  function onResize(e) {
     let viewportWidth = $(window).width();
     let viewportHeight = $(window).height();
     let left = 0;
     let scale = 1;
+    let wscale = scale;
+    let hscale = scale;
+    let maxWidth = 960;
+    //viewportWidth = viewportWidth < 960 ? viewportWidth : 960;
+    wscale = (viewportWidth < maxWidth ? viewportWidth : maxWidth) / 800;
+    hscale = viewportHeight / 600;
+    scale = Math.min(wscale,hscale);
+    left = (viewportWidth - (800 * scale)) * .5;
 
-    if(viewportWidth <= 1280) {
-      let wscale = viewportWidth / 800;
-      let hscale = viewportHeight / 600;
-      scale = Math.min(wscale,hscale);
-      left = 1;
-    } else {
-      left = (viewportWidth - (800 * scale)) * .5;
-    }
-    console.log(viewportWidth, viewportHeight, scale, left);
+    //console.log(viewportWidth, viewportHeight, scale, left);
+    //console.log('style',document.getElementById('main_container').style.cssText);
+    cp.movie.m_scaleFactor = scale;
     $('#main_container').attr('style',`
       top: 0px;
       position: fixed;
@@ -43,12 +44,13 @@ global.mn = (function(){
       transform-origin: left top 0px;
       transform: scale(${scale});
     `);
-  }*/
+  }
 
   window.addEventListener("moduleReadyEvent", function(evt)
   {
     cpInterface = evt.Data;
-    //window.cp.SetScaleAndPosition = function(){return false;};
+    window.cp.SetScaleAndPosition = function(){return true;};
+    onResize();
     $.getJSON("navigation.json", function(data) {
         myNavigation = new Navigation(cpInterface,winManager,data);
 
@@ -66,8 +68,7 @@ global.mn = (function(){
     });
   });
 
-  //onResize();
-  //$( window ).resize(onResize);
+  $( window ).resize(onResize);
 
   return {
     int:interactionUtils

@@ -1,7 +1,9 @@
 /*@media all and (max-width: 1000px) and (min-width: 700px) {
 
 }*/
-
+/**{
+  border: 1px solid #000;
+}*/
 .player-scaled {
   top: 0px; position: fixed; left: 327px; width: 800px; height: 600px; transform-origin: left top 0px; transform: scale(1.58333);
 }

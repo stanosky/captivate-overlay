@@ -8,11 +8,15 @@ const TabelOfContents = function (cpApi,nav) {
   let output = [];
   let screens = nav.getScreens();
   for (var i = 0; i < screens.length; i++) {
-    output.push("<div><input type='button' name='toc-item' id='toc-item-"+i+"'>"+
-                "<label for='toc-item-"+i+"'>"+
-                "<i class='fa fa-map-marker fa-lg' aria-hidden='true'></i>"+
-                "<span>"+screens[i].nr+".</span>&nbsp;&nbsp;"+
-                screens[i].label+"</label></div>");
+    output.push(`<div>
+                    <input type='button' name='toc-item' id='toc-item-${i}'>
+                    <label for='toc-item-${i}'>
+                      <i class='fa fa-map-marker fa-lg' aria-hidden='true'></i>
+                      <strong>${screens[i].nr}.</strong>
+                      <span>&nbsp;&nbsp;${screens[i].label}</span>
+                    </label>
+                  </div>
+              `);
   }
   $('#mntoc .slides-group').html(output.join(''));
   $('.slides-group div').click(function(e) {

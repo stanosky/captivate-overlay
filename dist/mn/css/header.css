@@ -19,7 +19,7 @@
 
 .mnheader p {
   position:relative;
-  margin-left:135px;
+  margin-left:200px;
   margin-top:0;
   margin-bottom:0;
   padding-left:10px;
@@ -42,12 +42,15 @@
 
 .mnheader div:nth-child(2) {
   background-color:#dfe1e5;
+  overflow-y: hidden;
 }
 
 .mnheader img {
    position:absolute;
-   width:135px;
+   width:200px;
    height:78px;
    top:0px;
    left:0px;
+   background-color: #fff;
+
 }
